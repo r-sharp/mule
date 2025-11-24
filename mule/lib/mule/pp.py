@@ -268,9 +268,10 @@ def fields_to_pp_file(pp_file_obj_or_path, field_or_fields,
         print(f"Was handed an open file object.")
         pp_file = pp_file_obj_or_path
 
-    print(f"umfile  : Grid stagger is {GRID_STAGGER[umfile.fixed_length_header.grid_staggering]}")
-    print(f"umfile  : Row dependent consts are {vars(umfile.row_dependent_constants)}")
-    print(f"umfile  : Col dependent consts are {vars(umfile.column_dependent_constants)}")
+    if umfile :
+        print(f"umfile  : Grid stagger is {GRID_STAGGER[umfile.fixed_length_header.grid_staggering]}")
+        print(f"umfile  : Row dependent consts are {vars(umfile.row_dependent_constants)}")
+        print(f"umfile  : Col dependent consts are {vars(umfile.column_dependent_constants)}")
     lookups = []
     for field_count, field in enumerate(list(field_or_fields)):
         if field.lbrel not in (2, 3):
